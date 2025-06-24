@@ -55,7 +55,40 @@
 <script type="text/javascript" async>!function(e,t){a=e.createElement("script"),m=e.getElementsByTagName("script")[0],a.async=1,a.src=t,m.parentNode.insertBefore(a,m)}(document,"https://universal.wgplayer.com/tag/?lh="+window.location.hostname+"&wp="+window.location.pathname+"&ws="+window.location.search);
 </script>
 
-
+<style> /* Add to your CSS file or <style> tag */
+#comment-section {
+  background: rgba(30,30,30,0.85);
+  border-radius: 10px;
+  padding: 18px 12px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#commentsList {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+.comment-item {
+  background: rgba(255,255,255,0.07);
+  border-radius: 7px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  color: #f0d210;
+  word-break: break-word;
+}
+.comment-item .user {
+  font-weight: bold;
+  color: #f0d210;
+}
+.comment-item .date {
+  font-size: 12px;
+  color: #bbb;
+  float: right;
+}
+@media (max-width: 768px) {
+  #comment-section { padding: 10px 4px; }
+}
+  </style>
 
 </head>
   <body id="page-top" style="background: url('images/background1.png'); background-size: cover;">
@@ -188,59 +221,6 @@
 </div>
 </div><!-- end col-9 -->
       
-
-<!-- hot game -->
-<div class="col-md-3">
-        <div align="center"> 
-            <div style="color: white;"><h3>Hot Game</h3></div>
-        <hr>
-
-<div class="vex_x">
-             <!-- ads_d -->
-   
-
-</div>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'e3e96017a4627a701ff72e82e5484d80',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/e3e96017a4627a701ff72e82e5484d80/invoke.js"></script>
-
-<div class="vex_x">
-        <div class="col-lg-12 col-md-4 col-6 list-grid">
-              <a  title="Drift Boss" href="/play/drift-boss.html">
-                <div class="list-game">
-                  <div class="list-thumbnail"><img src="https://ovo-game.github.io/imgs/drift-boss.png" data-src="https://ovo-game.github.io/imgs/drift-boss.png" class="small-thumb img-rounded lazyload" alt="Drift Boss"></div>
-                  <div style="color: white;"><strong>Drift Boss</strong></div>
-                </div>
-              </a>
-            </div>  
-            <br/>
-            
-            <script type="text/javascript">
-              atOptions = {
-                'key' : 'e3e96017a4627a701ff72e82e5484d80',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-              </script>
-<script type="text/javascript" src="//www.highperformanceformat.com/e3e96017a4627a701ff72e82e5484d80/invoke.js"></script>
-<hr>
-
-        </div>
-      </div>
-  </div>
-</div>
-
-<!-- and hot game -->
 
 
 <div class="banner-ad-wrapper">
@@ -1181,5 +1161,58 @@ If you're having trouble playing games on this website, don't worry! Just take a
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
+		    <!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+  import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-database.js";
+
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBoM1eBkSPaAAgO--3CescGi4W9DOKmVIE",
+    authDomain: "eggy-car-games.firebaseapp.com",
+    projectId: "eggy-car-games",
+    storageBucket: "eggy-car-games.appspot.com",
+    messagingSenderId: "212123485868",
+    appId: "1:212123485868:web:8d81664b9970060c84c109",
+    measurementId: "G-JML8FGVQPM",
+    databaseURL: "https://eggy-car-games-default-rtdb.firebaseio.com"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Comment logic
+  const commentForm = document.getElementById('commentForm');
+  const commentsList = document.getElementById('commentsList');
+  const usernameInput = document.getElementById('username');
+  const commentInput = document.getElementById('comment');
+
+  // Listen for new comments
+  const commentsRef = ref(db, 'comments/1v1lol');
+  onChildAdded(commentsRef, (data) => {
+    const val = data.val();
+    const date = new Date(val.timestamp || Date.now());
+    const dateStr = date.toLocaleString();
+    const div = document.createElement('div');
+    div.className = 'comment-item';
+    div.innerHTML = `<span class="user">${val.username}</span> <span class="date">${dateStr}</span><br>${val.comment}`;
+    commentsList.prepend(div);
+  });
+
+  // Handle new comment
+  commentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = usernameInput.value.trim().substring(0, 20);
+    const comment = commentInput.value.trim().substring(0, 200);
+    if (!username || !comment) return;
+    await push(commentsRef, {
+      username,
+      comment,
+      timestamp: Date.now()
+    });
+    commentInput.value = '';
+  });
+</script>
     </body>
 </html>
