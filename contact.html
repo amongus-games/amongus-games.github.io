@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Among Us Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+            background: rgba(102, 126, 234, 0.15);
+        }
+
+        .contact-item h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-item p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .email-link {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .email-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .contact-card {
+                padding: 30px 20px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-card">
+            <div class="header">
+                <h1 class="title">Contact Us</h1>
+                <p class="subtitle">Need help or have questions? We're here for you!</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-item">
+                    <h3><span class="icon">🐛</span> Bug Reports</h3>
+                    <p>Having trouble playing games? Found a glitch or something not working right? Take a screenshot of the problem and send it our way!</p>
+                    <a href="mailto:23azogame@gmail.com?subject=Bug Report" class="email-link">Report a Bug</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3><span class="icon">💡</span> Suggestions & Feedback</h3>
+                    <p>Got ideas for new games or features? Want to share your thoughts on how we can improve? We'd love to hear from you!</p>
+                    <a href="mailto:23azogame@gmail.com?subject=Suggestion" class="email-link">Share Your Ideas</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3><span class="icon">❓</span> General Questions</h3>
+                    <p>Have any other questions about our games or website? Need help with something specific? Don't hesitate to reach out!</p>
+                    <a href="mailto:23azogame@gmail.com?subject=Question" class="email-link">Ask a Question</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3><span class="icon">📧</span> Direct Email</h3>
+                    <p>You can also email us directly at:</p>
+                    <a href="mailto:23azogame@gmail.com" class="email-link">23azogame@gmail.com</a>
+                </div>
+            </div>
+
+            <p style="color: #777; font-size: 0.9rem; margin-top: 20px;">
+                We usually respond within 24-48 hours. Thanks for being part of our gaming community!
+            </p>
+        </div>
+
+        <a href="https://amongus-games.github.io/" class="back-link">← Back to Games</a>
+    </div>
+</body>
+</html>
