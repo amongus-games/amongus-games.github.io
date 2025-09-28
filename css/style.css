@@ -19,9 +19,9 @@ a:visited {
   text-decoration: none;
 }
 .top-nav {
-  margin-bottom: 40px;
+  margin-bottom: 5px;
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 20px 0;
+  padding: 9px 0;
 }
 .top-nav a {
   color: #fff;
@@ -408,6 +408,9 @@ ul.category-list-game .cat-item:hover {
   height: 100%;
   z-index: 10;
 }
+iframe{
+  background-color: #000000;
+}
 .widget-title {
   margin-bottom: 20px;
   color: #fff;
@@ -767,4 +770,127 @@ input.form-control {
   and (min-device-width : 320px)
   and (max-device-width : 480px){
    .mobileHide { display: none;}
+}
+/* Option 1: Media queries ke sath different heights */
+.game-iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 30.25vw; /* Desktop default */
+}
+
+/* Tablet aur mobile ke liye */
+@media screen and (max-width: 768px) {
+    .game-iframe-container {
+        min-height: 40vh; /* Mobile mein viewport height use karo */
+        /* Ya phir: min-height: 450px; fixed height ke liye */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-iframe-container {
+        min-height: 50vh; /* Chhote mobile screens ke liye */
+        /* Ya phir: min-height: 400px; */
+    }
+}
+/* Game Info Header Alignment Fix */
+/* Base styles with stronger specificity */
+.game-info {
+    background: rgba(34, 34, 34) !important;
+    padding: 18px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.game-info .header-left {
+    margin: 0 !important;
+    flex: 1 !important;
+    text-align: left !important; /* Desktop mein title LEFT side - FORCE */
+}
+
+.game-info .header-right {
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    text-align: right !important; /* Desktop mein button RIGHT side - FORCE */
+}
+
+.game-info .header-left .single-title {
+    margin: 0 !important;
+    font-size: calc(1.3rem + .6vw) !important;
+    color: #fff !important;
+    line-height: 1.2 !important;
+    text-align: left !important; /* Title specifically LEFT align */
+}
+
+/* H1 title ka margin adjust karo */
+.header-left .single-title {
+    margin: 0; /* Default margins remove karo */
+    font-size: calc(1.3rem + .6vw);
+    color: #fff;
+    line-height: 1.2; /* Line height set karo consistent alignment ke liye */
+}
+
+/* Button styling maintain karo */
+.header-right .btn {
+    margin: 0; /* Extra margins remove karo */
+    vertical-align: middle; /* Button ko center align karo */
+}
+
+/* Mobile responsive adjustments - SIRF mobile ke liye */
+@media only screen and (max-width: 768px) {
+    .game-info {
+        flex-direction: column !important; /* Mobile mein vertical stack */
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    .header-left {
+        text-align: center !important;
+        margin-bottom: 15px;
+        order: 1; /* Title pehle */
+    }
+    
+    .header-right {
+        text-align: center !important;
+        order: 2; /* Button baad mein */
+    }
+}
+
+/* Desktop - original layout maintain karo */
+@media only screen and (min-width: 769px) {
+    .game-info {
+        justify-content: space-between; /* Desktop mein spread out */
+    }
+    
+    .header-left {
+        text-align: left; /* Desktop mein left align */
+        flex-basis: auto;
+        margin-bottom: 0;
+    }
+    
+    .header-right {
+        text-align: right; /* Desktop mein right align */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .header-left .single-title {
+        font-size: 1.5rem; /* Mobile mein font size kam karo */
+    }
+}
+.col-md-9{border: 2px solid #ffffff;border-radius: 20px; padding: 0 0;}
+.game-iframe-container {
+    position: relative;
+}
+
+.loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6c757d;
+    font-size: 16px;
+    z-index: 5;
 }

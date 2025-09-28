@@ -376,3 +376,15 @@ function show_leaderboard(data){
 		});
 	}
 })();
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const iframe = document.getElementById('game-area');
+    const loadingText = document.getElementById('loading-text');
+    
+    iframe.addEventListener('load', function() {
+        loadingText.style.display = 'none';
+        iframe.style.display = 'block';
+    });
+});
