@@ -894,3 +894,26 @@ input.form-control {
     font-size: 16px;
     z-index: 5;
 }
+.game-overview {
+      border: 2px solid #f0d210;
+      /* Adjust the border width if needed */
+      border-radius: 20px;
+    }
+
+    .game-overview {
+      background-color: black;
+      border: 2px solid #f0d210;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      color: white;}
+      a {
+    color: #f0d210; /* Link color */
+    text-decoration: none; /* Remove underline */
+  }
+  .game-overview h2, h3, h4 {
+    font-weight: bold;
+}
+  a:hover {
+    color: #f0d210; /* Hover color */
+  }
